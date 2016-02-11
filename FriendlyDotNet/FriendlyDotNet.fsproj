@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <None Include="AnalysisScript.fsx" />
+    <Compile Include="System.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
