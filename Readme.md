@@ -2,18 +2,64 @@
 
 This project aims to make the interactions with .Net types from F# friendlier.
 
-TODO ToDo
+As a recent convert from C# to F#, I can't help but feel a bit dirty whenever I have to do things that are clearly non-functional. 
+For example, turning an `int` into a `string` I can either call the `.ToString()` method, or use the more verbose `sprintf "%i" i`.  
+
+Or how about deleting a folder of the hard drive? Then I have to issue a `Directory.Delete(name, false)`. Why do I need to type those parentheseses? And by the way, what is the meaning of that `false`? 
+Why can't I call the method like `Directory.Delete name NonRecursive`
+
+Another nagging problem is the lot of .Net methods return `null` signaling that there is nothing to return. `null` is sort of the family's black sheep that no one wants to hang around. Yet when you use the .Net api you are constantly smacked in the head with them. 
+We need wrappers to turn `null` into `Option`. 
+Finally, a wide range of Api methods make use of the Try-pattern, returning a `bool` and is equipped with an `out` parameter. Dealing with say a `int.TryParse()` is certainly nicer in F# than in C# but it still feels a bit wrong
+
+```F#
+match int.TryParse(httpParameter) with
+| true, x -> x
+| false, _ -> ...
+```
+
+this is not very F#'ish, why not have
+
+```F#
+match int.tryParse httpParameter with
+| Some x -> x
+| None -> ...
+```
+
+Another solution is active patterns, more on those later.
+
+To summarize. 
+  * It feels unnatural to be forced into using `()` and commas when invoking methods
+  * Some actions are verbose done purely in F# (such as using `sprintf`)
+  * Some Api can be made clearer by replacing the use of bool and other "undescriptive types" with say discriminating unions.
+  * Dealing with `null`'s and try-patterns feels wrong when we have `Option`.
 
 
+## Goals
+
+The goals of this project are
+
+  * By defining a set of helper functions, we can make the interaction much smoother and generally making the coding experince better.
+  * When defining the helper methods, we can rectify or make clearer the existing .Net api.
+
+
+## Challenges
+There are several challenges. One of them being that F# does not have function overloading like C# has method overloading. A lot of methods in the .Net framework are overloaded. 
+And a lot of methods are instance methods, because that's natural for any OOP language. But many instance methods are pure, that is, they have no side-effects on the object on which it is invoked.
+Take the `DateTime.Add(TimeSpan)` method which returns a **new** `DateTime` objet. From F# I'm forced to call this method with the ugly parenthesis again like `let date2 = date1.Add(TimeSpan.FromSeconds(3)`. 
+It sure would look nice if we could just do `let date 2 = TimeSpan.FromSeconds 3 |> date1.add`
+
+F# offer a range of language constructs not found in C#, active patterns for one. So if we provide a nice
 
 
 # Inspiration for methods to wrap
 
-This list was created by executing the `Analysis.fsx` script. The list shows all static methods for a couple of central assemblies, with methods enclosed in `*` to denote they are not overloaded (ie. easy to wrap)
+This list was created by executing the `Analysis.fsx` script. 
+
+The list shows all static methods for a couple of central assemblies, with methods enclosed in `*` to denote they are not overloaded (ie. easy to wrap)
 
 
 ```
-> 
 ####################
 mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 ####################
