@@ -1,10 +1,10 @@
 # F# friendly .Net 
 
-This project aims to make the interactions with .Net types from F# friendlier.
+Making interaction with the .Net Api feel much more natural and friendlier for the eye.
 
 
 ## Raison d'être
-As a recent convert from C# to F#, I can't help but feel a bit dirty whenever I have to do things that are clearly non-functional. 
+As a recent "convert" from C# to F#, I can't help but feel a bit dirty whenever I have to do things that are clearly non-functional. 
 For example, turning an `int` into a `string` I can either call the `.ToString()` method, or use the more verbose `sprintf "%i" i`.  
 
 Or how about deleting a folder of the hard drive? Then I have to issue a `Directory.Delete(name, false)`. Why do I need to type those parentheseses? And by the way, what is the meaning of that `false`? 
