@@ -2,6 +2,8 @@
 
 This project aims to make the interactions with .Net types from F# friendlier.
 
+
+## Raison d'être
 As a recent convert from C# to F#, I can't help but feel a bit dirty whenever I have to do things that are clearly non-functional. 
 For example, turning an `int` into a `string` I can either call the `.ToString()` method, or use the more verbose `sprintf "%i" i`.  
 
@@ -44,17 +46,19 @@ The goals of this project are
 
 
 ## Challenges
-There are several challenges. One of them being that F# does not have function overloading like C# has method overloading. A lot of methods in the .Net framework are overloaded. 
-And a lot of methods are instance methods, because that's natural for any OOP language. But many instance methods are pure, that is, they have no side-effects on the object on which it is invoked.
+There are several challenges. 
+
+* One of them being that F# does not have function overloading like C# has method overloading. A lot of methods in the .Net framework are overloaded. So we can only choose a subset of the .Net methods if we want a 1-1 ration in naming.
+* And a lot of methods are instance methods, because that's natural for any OOP language. But many instance methods are pure, that is, they have no side-effects on the object on which it is invoked.
 Take the `DateTime.Add(TimeSpan)` method which returns a **new** `DateTime` objet. From F# I'm forced to call this method with the ugly parenthesis again like `let date2 = date1.Add(TimeSpan.FromSeconds(3)`. 
 It sure would look nice if we could just do `let date 2 = TimeSpan.FromSeconds 3 |> date1.add`
+* Focus and completenes. It is not the goal to cover every method of the .Net api. But what should be covered, what must be covered? etc. 
+* F# offer a range of language constructs not found in C#, active patterns for one. We have to think these language features into the implementation when providing a friendly interface. 
 
-F# offer a range of language constructs not found in C#, active patterns for one. So if we provide a nice
 
+# Inspiration for static methods to wrap
 
-# Inspiration for methods to wrap
-
-This list was created by executing the `Analysis.fsx` script. 
+Static methods are less probable to have side-effects and they do not require an object instance to be called. Hence they may be low hanging fruits to be picked first when providing the friendlier interface. This list below was created by executing the `Analysis.fsx` script. 
 
 The list shows all static methods for a couple of central assemblies, with methods enclosed in `*` to denote they are not overloaded (ie. easy to wrap)
 
