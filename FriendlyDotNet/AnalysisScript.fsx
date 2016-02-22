@@ -40,9 +40,11 @@ let processs (assembly : Assembly) : unit =
                 printfn "\n%s" typee.Name
                 printfn "----------------"        
                 for meth in methods do
-                    let hasoverload = if overloads.Item(meth.Name).Length = 1 then "*" else ""
+                    let hasoverload = overloads.Item(meth.Name).Length = 1 
+                    let hasMultipleParameters = meth.GetParameters().Count() > 1 
+                    let highlight s = if hasoverload && hasMultipleParameters then "*"+s+"*" else s
                     let signature = meth.GetParameters() |> Seq.map(fun typee -> typee.ParameterType.Name) |> String.concat ","
-                    printfn "%s%s.%s(%s)%s" hasoverload typee.Name meth.Name signature hasoverload 
+                    sprintf "%s.%s(%s)" typee.Name meth.Name signature |> highlight |> printfn "%s"
 
 processs <| Assembly.GetAssembly("".GetType())
 
