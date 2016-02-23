@@ -45,28 +45,23 @@ module DateAndTime =
 
 [<AutoOpen>]
 module Parsing =
-    let inline boolResultToOption x =
-        match x with
-        | true, y -> Some y
-        | false, _ -> None
-
     type System.Boolean with
-        static member tryParse str = System.Boolean.TryParse str |> boolResultToOption   
+        static member tryParse str = System.Boolean.TryParse str |> tryresultAsOption   
 
     type System.Double with
-        static member tryParse str = System.Double.TryParse str |> boolResultToOption   
+        static member tryParse str = System.Double.TryParse str |> tryresultAsOption   
 
     type System.Int32 with 
-        static member tryParse str = System.Int32.TryParse str |> boolResultToOption   
+        static member tryParse str = System.Int32.TryParse str |> tryresultAsOption   
 
     type System.Int64 with 
-        static member tryParse str = System.Int64.TryParse str |> boolResultToOption   
+        static member tryParse str = System.Int64.TryParse str |> tryresultAsOption   
 
     type System.Guid with 
-        static member tryParse str = System.Guid.TryParse str |> boolResultToOption   
+        static member tryParse str = System.Guid.TryParse str |> tryresultAsOption   
 
     type System.DateTime with 
-        static member tryParse str = System.DateTime.TryParse str |> boolResultToOption   
+        static member tryParse str = System.DateTime.TryParse str |> tryresultAsOption   
     
     // for each of the above extension methods, define an active pattern below
     let (|Bool|_|) str = System.Boolean.tryParse str
