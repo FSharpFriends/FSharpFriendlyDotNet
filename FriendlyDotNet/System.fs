@@ -41,41 +41,28 @@ module DateAndTime =
 
 [<AutoOpen>]
 module Parsing =
+    let inline boolResultToOption x =
+        match x with
+        | true, y -> Some y
+        | false, _ -> None
+
     type System.Boolean with
-        static member tryParse str =
-            match System.Boolean.TryParse str with
-            | true, x -> Some x
-            | false, _ -> None
+        static member tryParse str = System.Boolean.TryParse str |> boolResultToOption   
 
     type System.Double with
-        static member tryParse str =
-            match System.Double.TryParse str with
-            | true, x -> Some x
-            | false, _ -> None
+        static member tryParse str = System.Double.TryParse str |> boolResultToOption   
 
     type System.Int32 with 
-        static member tryParse str =
-            match System.Int32.TryParse str with
-            | true, x -> Some x
-            | false, _ -> None
+        static member tryParse str = System.Int32.TryParse str |> boolResultToOption   
 
     type System.Int64 with 
-        static member tryParse str =
-            match System.Int64.TryParse str with
-            | true, x -> Some x
-            | false, _ -> None
+        static member tryParse str = System.Int64.TryParse str |> boolResultToOption   
 
     type System.Guid with 
-        static member tryParse str =
-            match System.Guid.TryParse str with
-            | true, x -> Some x
-            | false, _ -> None
+        static member tryParse str = System.Guid.TryParse str |> boolResultToOption   
 
     type System.DateTime with 
-            static member tryParse str =
-                match System.DateTime.TryParse str with
-                | true, x -> Some x
-                | false, _ -> None
+        static member tryParse str = System.DateTime.TryParse str |> boolResultToOption   
     
     // for each of the above extension methods, define an active pattern below
     let (|Bool|_|) str = System.Boolean.tryParse str

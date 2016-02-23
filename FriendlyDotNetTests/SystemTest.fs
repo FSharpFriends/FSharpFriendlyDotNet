@@ -91,9 +91,5 @@ module SystemTests =
                     | Bool b -> "is bool"
                     | _ -> invalidArg str "should be something"
         test <@ conv = "is int64" @>
-        let d = new DateTime()
-        d.Add (TimeSpan.FromDays(1.0))
-        d.Add <| TimeSpan.FromDays 1.0
-//        d.Add TimeSpan.FromDays(1.0)
-        d.Add (TimeSpan.FromDays 1.0)
+     
 

@@ -37,6 +37,16 @@ It sure would look nice if we could just do `let date 2 = TimeSpan.FromSeconds 3
 
 
 
+# Understanding the F# syntax
+
+```F#
+   let d = new DateTime()
+        d.Add (TimeSpan.FromDays(1.0))    // ok
+        d.Add <| TimeSpan.FromDays 1.0    // ok
+        d.Add TimeSpan.FromDays(1.0)    // FAIL
+        d.Add (TimeSpan.FromDays 1.0)     // ok
+```
+
 
 
 # Inspiration for static methods to wrap
