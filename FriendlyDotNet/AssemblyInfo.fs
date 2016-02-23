@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[<assembly: AssemblyTitle("FriendlyDotNet")>]
-[<assembly: AssemblyDescription("Library to make F# interaction with .Net code friendlier")>]
+[<assembly: AssemblyTitle("FSharpFriendlyDotNet")>]
+[<assembly: AssemblyDescription("Library to make F# interaction with .Net code friendlier. License: Apache 2.0")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("FSharpFriends")>]
-[<assembly: AssemblyProduct("FriendlyDotNet")>]
+[<assembly: AssemblyProduct("FSharpFriendlyDotNet")>]
 [<assembly: AssemblyCopyright("Copyright ©  2016")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
