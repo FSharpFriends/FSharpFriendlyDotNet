@@ -21,40 +21,36 @@ For example turning an int `i` into a string `s` one can do
 ```F#
 let i = 4
 let s1 = i.ToString()    // I dont like the parenthesis and it feels non-functional
-let s2 = sprintf "%d" i  // so verbose
-let s3 = toString i      // functional and without all the `.` and `()`.
+let s2 = sprintf "%d" i  // involves lots of shift-key pressing and little autocompletion
+let s3 = toString i      // functional style and terse
 ```
-clearly the `s3` version is the less verbose and most functional.
+clearly the `s3` version is the less verbose and most functional.. and a part of this library.
 
-Or how about turning try-patterns into something that returns `Option` like
+Or how about turning try-method matching like 
 
 ```F#
 match int.TryParse(httpParameter) with
 | true, x -> x
 | false, _ -> ...
 ```
-which is more naturally expressed as 
+
+into something that returns `Option` like
 
 ```F#
-match int.tryParse httpParameter with
+match int.tryParse httpParameter with // using this library
 | Some x -> x
 | None -> ...
 ```
 
-The missing type conversions in F# make for some really odd looking code. Just look at the `TimeSpan` api.
+The missing type conversions in F# make for some really odd looking code. Just look at the `TimeSpan` api. Most of the `TimeSpan` methods take a `double` as an argument. 
+I have yet to find a situation where you want to use a double as an argument. 
+Pop quiz: What is the result of `TimeSpan.FromMinutes(0.12345)` ? Answer `00:00:07.4070000` ([Microsoft](https://msdn.microsoft.com/en-us/library/system.timespan.fromminutes%28v=vs.110%29.asp)). 
+Are you kidding me Microsoft? Seriously? Please allow me to only use integers.
 
 ```F#
-TimeSpan.FromMinutes(1.0)
+TimeSpan.FromMinutes(1.0)   // original
+TimeSpan.fromMinutes 1      // using this library
 ```
-
-I'd rather be able to say
-
-
-```F#
-TimeSpan.fromMinutes 1
-```
-
-Most of the `TimeSpan` methods take a `double` as an argument. I have yet to find a situation where you want to use a double as an argument. Let me tell you why I prefer an int. What is the result of `TimeSpan.FromMinutes(0.12345)` ? acording to [Microsoft](https://msdn.microsoft.com/en-us/library/system.timespan.fromminutes%28v=vs.110%29.asp) it yields `00:00:07.4070000`. That just seems *wrong*. Please allow me to only use integers.
 
 
 # Documentation
@@ -64,7 +60,10 @@ Here is the full documentation of the package. See also the code, it is pretty-s
 
 ## `System`
 
-Implementations: [https://github.com/FSharpFriends/FSharpFriendlyDotNet/blob/master/FriendlyDotNet/System.fs](https://github.com/FSharpFriends/FSharpFriendlyDotNet/blob/master/FriendlyDotNet/System.fs)
+Implementations: [System.fs](https://github.com/FSharpFriends/FSharpFriendlyDotNet/blob/master/FriendlyDotNet/System.fs)
+
+How to access this below code 
+
 
 ### String parsing
 

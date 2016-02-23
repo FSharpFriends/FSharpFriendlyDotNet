@@ -1,15 +1,28 @@
-﻿namespace FriendlyDotNetTests
+﻿/// This code is licensed as Apache 2.0 
 
-module SystemTests =
-    open Xunit
-    open System
-    open Swensen.Unquote
+namespace FriendlyDotNetTests
 
+open Xunit
+open System
+open Swensen.Unquote
+
+module Coretests =
     [<Fact>]
     let ``toString test`` () =
         let i = 4
         test <@ "4" = toString i @>
 
+
+module DateAndTimeTests =
+    [<Fact>]
+    let ``Timespan helpers`` () =
+        test <@ TimeSpan.fromDays 1 = TimeSpan.FromDays(1.0) @>
+        test <@ TimeSpan.fromHours 2 = TimeSpan.FromHours(2.0) @>
+        test <@ TimeSpan.fromMilliseconds 3 = TimeSpan.FromMilliseconds(3.0) @>
+        test <@ TimeSpan.fromMinutes 4 = TimeSpan.FromMilliseconds(4.0) @>
+
+
+module SystemTests =
     [<Fact>]
     let ``Boolean.tryparse nonnumber = None`` () =
         test <@ Boolean.tryParse "baby" = None @>
@@ -81,6 +94,6 @@ module SystemTests =
         let d = new DateTime()
         d.Add (TimeSpan.FromDays(1.0))
         d.Add <| TimeSpan.FromDays 1.0
-        d.Add TimeSpan.FromDays(1.0)
+//        d.Add TimeSpan.FromDays(1.0)
         d.Add (TimeSpan.FromDays 1.0)
 
