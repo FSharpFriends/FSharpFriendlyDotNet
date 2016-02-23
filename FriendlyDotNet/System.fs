@@ -14,17 +14,6 @@ module Core =
         if(box x = null) then None else Some x
     
     /// Unwrap a Nullable<_> by providing a defaultValue if null
-
-    /// Turn 'null' into 'None'. Nice for wrapping the result of a .Net api call or deserialization of Json or Xml data
-    let nullAsNone v = 
-        if isNull v then None else Some v
-
-    // Convert 'None' into null. 
-    // Should only be used when interfacing with other .Net code or serializing to Json, Xml, etc.
-    let noneAsNull v =
-        match v with
-        | None -> null
-        | Some x -> x
     let unNullable defaultValue (x :Nullable<_>) = 
         if x.HasValue then x.Value else defaultValue
     
