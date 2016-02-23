@@ -14,8 +14,6 @@ module Core =
         if(box x = null) then None else Some x
     
     /// Unwrap a Nullable<_> by providing a defaultValue if null
-    let unNullable defaultValue (i:Nullable<_>) = 
-        if i.HasValue then i.Value else defaultValue
 
     /// Turn 'null' into 'None'. Nice for wrapping the result of a .Net api call or deserialization of Json or Xml data
     let nullAsNone v = 
@@ -27,11 +25,20 @@ module Core =
         match v with
         | None -> null
         | Some x -> x
+    let unNullable defaultValue (x :Nullable<_>) = 
+        if x.HasValue then x.Value else defaultValue
+    
+    /// Nicer implementation than the 'core.defualtArg' since the default value is the first parameter - making it easier to use with piping
+    let unOption defaultValue x =
+        match x with 
+        | Some y -> y
+        | None -> defaultValue
 
     let tryresultAsOption x =
         match x with
         | true, y -> Some y
         | false, _ -> None
+
 
 [<AutoOpen>]
 module DateAndTime =
