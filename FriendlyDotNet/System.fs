@@ -28,6 +28,10 @@ module Core =
         | None -> null
         | Some x -> x
 
+    let tryresultAsOption x =
+        match x with
+        | true, y -> Some y
+        | false, _ -> None
 
 [<AutoOpen>]
 module DateAndTime =
