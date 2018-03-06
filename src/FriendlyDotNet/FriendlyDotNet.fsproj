@@ -2,6 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+    <Title>Friendly FSharp .Net facade</Title>
+    <Authors>Kasper B. Graversen</Authors>
+    <Copyright>Copyright 2016-</Copyright>
+    <Language>en-US</Language>
+
+    <PackageId>FSharpFriendlyDotNet</PackageId>
+    <PackageVersion>0.1.0</PackageVersion>
+    <PackageDescription>An open source library to enable more natural interaction with the .Net framework (which more naturally interacts with C#).</PackageDescription>
+    <PackageTags>F# FSharp friendly.NET facade</PackageTags>
+    <PackageProjectUrl>https://github.com/FSharpFriends/FSharpFriendlyDotNet</PackageProjectUrl>
+    <PackageIconUrl>https://avatars0.githubusercontent.com/u/17147742</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/FSharpFriends/FSharpFriendlyDotNet/master/LICENSE</PackageLicenseUrl>
+
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
   <ItemGroup>
