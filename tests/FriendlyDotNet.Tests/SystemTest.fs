@@ -66,7 +66,7 @@ module SystemTests =
 
     [<Fact>]
     let ``Active patterns for conversion double`` () =
-        let str = "3,14159265"
+        let str = 3.14159265.ToString()
         let conv = match str with
                     | Float f -> f
                     | _ -> invalidArg str "should be a double"
