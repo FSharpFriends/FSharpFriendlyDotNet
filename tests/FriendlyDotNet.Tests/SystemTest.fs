@@ -19,7 +19,7 @@ module DateAndTimeTests =
         test <@ TimeSpan.fromDays 1 = TimeSpan.FromDays(1.0) @>
         test <@ TimeSpan.fromHours 2 = TimeSpan.FromHours(2.0) @>
         test <@ TimeSpan.fromMilliseconds 3 = TimeSpan.FromMilliseconds(3.0) @>
-        test <@ TimeSpan.fromMinutes 4 = TimeSpan.FromMilliseconds(4.0) @>
+        test <@ TimeSpan.fromMinutes 4 = TimeSpan.FromMinutes(4.0) @>
 
 
 module SystemTests =
