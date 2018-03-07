@@ -10,9 +10,8 @@ dotnet_csproj: # patches fsprojs too :)
 
 build_script:
   - ps: dotnet build -c Release
+  - ps: dotnet pack -c Release --no-build -o "$(pwd)\nuget_packages"
 test_script:
   - ps: dotnet test -c Release --no-build .\tests\FriendlyDotNet.Tests
-deploy_script:
-  - ps: dotnet pack -c Release --no-build -o "$(pwd)\nuget_packages"
 artifacts:
   - path: nuget_packages\*.nupkg
