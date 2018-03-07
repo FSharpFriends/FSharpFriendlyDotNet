@@ -61,7 +61,7 @@ module SystemTests =
         let conv = match str with
                     | Bool b -> b
                     | _ -> invalidArg str "should be a bool"
-        test <@ conv = false @>
+        test <@ not conv @>
 
 
     [<Fact>]
@@ -91,5 +91,3 @@ module SystemTests =
                     | Bool b -> "is bool"
                     | _ -> invalidArg str "should be something"
         test <@ conv = "is int64" @>
-     
-
