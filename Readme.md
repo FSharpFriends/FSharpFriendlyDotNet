@@ -1,6 +1,8 @@
 # F# friendly .Net 
 
-*Making interaction with the .Net Api feel much more natural and friendlier for the eye.* For an in-depth explanation see https://github.com/FSharpFriends/FSharpFriendlyDotNet/blob/master/Ramblings.md 
+*Making interaction with the .Net Api feel much more natural and friendlier for the eye.* 
+
+[In-depth ramblings here](https://github.com/FSharpFriends/FSharpFriendlyDotNet/blob/master/Ramblings.md)
 
 
 Typical problems when interacting with the .Net api are
