@@ -1,6 +1,7 @@
 # F# friendly .Net 
 
-Making interaction with the .Net Api feel much more natural and friendlier for the eye.
+*Making interaction with the .Net Api feel much more natural and friendlier for the eye.* For an in-depth explanation see https://github.com/FSharpFriends/FSharpFriendlyDotNet/blob/master/Ramblings.md 
+
 
 Typical problems when interacting with the .Net api are
   * Dealing with `null`'s and try-methods feels wrong when we have `Option` in F#. An example of a try-method is `int.Parse()`
@@ -89,4 +90,15 @@ let str = "8284784593947573344"
  // conv -> "is int64"
 ```
 
+# Getting the package
+The package is found on nuget. Use any of the following
 
+    Install-Package FSharpFriendlyDotNet  
+    
+or
+
+    dotnet add package FSharpFriendlyDotNet 
+
+or
+
+    paket add FSharpFriendlyDotNet  
