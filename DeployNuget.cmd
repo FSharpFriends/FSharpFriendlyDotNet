@@ -4,4 +4,6 @@
 
 call CreateNuget.cmd
 
-dotnet nuget push nuget_packages/*.nupkg --source https://nuget.org
+cd nuget_packages
+dotnet nuget push *.nupkg --source https://nuget.org
+cd ..
