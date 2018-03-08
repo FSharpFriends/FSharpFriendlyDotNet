@@ -5,5 +5,6 @@
 call CreateNuget.cmd
 
 cd nuget_packages
+dotnet nuget push *.symbols.nupkg --source https://nuget.org
 dotnet nuget push *.nupkg --source https://nuget.org
 cd ..
