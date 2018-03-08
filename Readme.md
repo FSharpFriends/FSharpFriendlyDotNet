@@ -60,7 +60,7 @@ Here is the full documentation of the package. See also the code, it is pretty-s
 
 ## `System`
 
-Implementations: [System.fs](https://github.com/FSharpFriends/FSharpFriendlyDotNet/blob/master/FriendlyDotNet/System.fs)
+Implementations: [System.fs](https://github.com/FSharpFriends/FSharpFriendlyDotNet/blob/master/src/FriendlyDotNet/System.fs)
 
 How to access this below code 
 
