@@ -1,0 +1,17 @@
+version: 0.1.{build}-{branch}
+
+dotnet_csproj: # patches fsprojs too :)
+  patch: true
+  file: '**\*.props;**\*.fsproj;**\*.xml'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+
+build_script:
+  - ps: dotnet build -c Release
+  - ps: dotnet pack -c Release --no-build -o "$(pwd)\nuget_packages"
+test_script:
+  - ps: dotnet test -c Release --no-build .\tests\FriendlyDotNet.Tests
+artifacts:
+  - path: nuget_packages\*.nupkg

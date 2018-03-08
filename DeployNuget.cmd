@@ -1,10 +1,7 @@
-REM ON FIRST RUN, RUN THIS (change the key to whatever is found on your profile on www.nuget.org ->   
-REM .nuget\NuGet.exe setapikey e39ea-get-the-full-key-on-nuget.org
+@echo Before first run, set the Nuget API key in your NuGet.config to whatever is found on your profile on nuget.org
+@echo For config file locations, see https://docs.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior#config-file-locations-and-uses
+@echo If you have nuget on your path, you can use nuget config -Set ApiKey ^<your-api-key^>
 
 call CreateNuget.cmd
-NuGet.exe push nuget_packages\*.symbols.nupkg
-NuGet.exe push nuget_packages\*.nupkg
 
-pause 
-
-rmdir nuget_packages  /s /q
+dotnet nuget push nuget_packages/*.nupkg --source https://nuget.org

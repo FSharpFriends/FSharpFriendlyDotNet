@@ -19,7 +19,7 @@ module DateAndTimeTests =
         test <@ TimeSpan.fromDays 1 = TimeSpan.FromDays(1.0) @>
         test <@ TimeSpan.fromHours 2 = TimeSpan.FromHours(2.0) @>
         test <@ TimeSpan.fromMilliseconds 3 = TimeSpan.FromMilliseconds(3.0) @>
-        test <@ TimeSpan.fromMinutes 4 = TimeSpan.FromMilliseconds(4.0) @>
+        test <@ TimeSpan.fromMinutes 4 = TimeSpan.FromMinutes(4.0) @>
 
 
 module SystemTests =
@@ -61,12 +61,12 @@ module SystemTests =
         let conv = match str with
                     | Bool b -> b
                     | _ -> invalidArg str "should be a bool"
-        test <@ conv = false @>
+        test <@ not conv @>
 
 
     [<Fact>]
     let ``Active patterns for conversion double`` () =
-        let str = "3,14159265"
+        let str = 3.14159265.ToString()
         let conv = match str with
                     | Float f -> f
                     | _ -> invalidArg str "should be a double"
@@ -91,5 +91,3 @@ module SystemTests =
                     | Bool b -> "is bool"
                     | _ -> invalidArg str "should be something"
         test <@ conv = "is int64" @>
-     
-
